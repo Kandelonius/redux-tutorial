@@ -13,7 +13,7 @@ class Posts extends Component {
             .then(res => res.json())
             .then(data => this.setState({
                 posts: data
-            })); // usind fetch instead of axios
+            })); // using fetch instead of axios
     }
     render() {
         const postItems = this.state.posts.map(post => (
