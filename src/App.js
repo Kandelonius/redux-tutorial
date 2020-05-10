@@ -2,13 +2,13 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import store from './components/store';
 
 
 import Posts from "./components/Posts";
 import PostsForm from "./components/PostsForm";
 
-const store = createStore()
+// const store = createStore(() => [], {}, applyMiddleware());
 
 
 class App extends React.Component {
