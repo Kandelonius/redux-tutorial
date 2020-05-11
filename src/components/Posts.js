@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/postActions';
 import './PostStyles.css';
 class Posts extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: []
-        }
-    }
+    // constructor(props) { **got rid of this after moving fetch to postActions.js
+    //     super(props);
+    //     this.state = {
+    //         posts: []
+    //     }
+    // }
+    // componentDidMount() { **got rid of this after moving fetch to postActions.js
+    // componentWillMount(){ **considered unsafe
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    //     .then(res => res.json())
+    //     .then(data => this.setState({
+    //         posts: data
+    //     })); // using fetch instead of axios
+    // }
+
     componentDidMount() {
-        // componentWillMount(){ **considered unsafe
-        fetch("https://jsonplaceholder.typicode.com/posts")
-            .then(res => res.json())
-            .then(data => this.setState({
-                posts: data
-            })); // using fetch instead of axios
+        this.props.fetchPosts();
     }
     render() {
         const postItems = this.state.posts.map(post => (
@@ -31,4 +37,4 @@ class Posts extends Component {
     }
 }
 
-export default Posts;
+export default connect(null, { fetchPosts })(Posts);
